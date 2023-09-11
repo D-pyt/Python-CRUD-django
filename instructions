@@ -1,3 +1,6 @@
 1. inst venv: sudo apt install python3.11-venv
 2. env:   python3 -m venv ENVIRONMENT_NAME
 3. activate env: source venv/bin/activate
+4. django inst: pip istall django
+# 5. django-admin startproject django_project .
+# 6. python manage.py startapp stars
