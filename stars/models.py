@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Stars(models.Model):
+class Star(models.Model):
     star_name = models.TextField(max_length=50)
     star_constellation = models.CharField(max_length=50)
     star_type = models.CharField(max_length=50)
@@ -12,5 +12,4 @@ class Stars(models.Model):
     star_turn_speed = models.TextField(max_length=25)
 
     def __str__(self):
-        return f'Stars: {self.star_name} {self.star_constellation}'
-       
+        return f'Star: {self.star_name} {self.star_constellation}'
