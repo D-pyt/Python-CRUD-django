@@ -31,7 +31,7 @@
               <h3 class="m-4">All stars</h3>
               <div class="row">
                 <div class="col-12">
-                  {% if star %}
+                  {% if stars %}
                   <div class="card border-secondary ms-4 me-4 mb-4">
                     <div class="card-header" bis_skin_checked="1">
                       <i class="fa-solid fa-list-ul"></i> Stars list
@@ -43,7 +43,7 @@
                             <thead>
                               <tr>
                                 <th scope="col">Star name</th>
-                                <th scope="col">Constelation</th>
+                                <th scope="col">Constellation</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Distance</th>
                                 <th scope="col">Mass</th>
@@ -56,8 +56,8 @@
                             <tbody>
                               {% for star in stars %}
                                <tr>
-                                <td>{{ star.star_name}}</td>
-                                <td>{{ star.star_contelation}}</td>
+                                <td>{{ star.star_name }}</td>
+                                <td>{{ star.star_constellation }}</td>
                                 <td>{{ star.star_type }}</td>
                                 <td>{{ star.star_distance }} </td>
                                 <td>{{ star.star_mass }} </td>
