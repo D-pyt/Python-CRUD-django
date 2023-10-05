@@ -48,4 +48,3 @@ def add(request):
         return render(request, 'stars/add.html', {
             'form': StarForm()
         })
-

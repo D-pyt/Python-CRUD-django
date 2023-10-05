@@ -28,59 +28,8 @@
                 </div>
               </nav>
             <div class="container-fluid">
-              <h3 class="m-4">All stars</h3>
-              <div class="row">
-                <div class="col-12">
-                  {% if stars %}
-                  <div class="card border-secondary ms-4 me-4 mb-4">
-                    <div class="card-header" bis_skin_checked="1">
-                      <i class="fa-solid fa-list-ul"></i> Stars list
-                    </div>
-                    <div class="card-body" bis_skin_checked="1">
-                      <p class="card-text">
-                        <div class="table-responsive">    
-                          <table class="table table-hover">
-                            <thead>
-                              <tr>
-                                <th scope="col">Star name</th>
-                                <th scope="col">Constellation</th>
-                                <th scope="col">Type</th>
-                                <th scope="col">Distance</th>
-                                <th scope="col">Mass</th>
-                                <th scope="col">Temperature</th>
-                                <th scope="col">Period</th>
-                                <th scope="col">Turn speed</th>
-                                <th scope="col">Actions</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {% for star in stars %}
-                               <tr>
-                                <td>{{ star.star_name }}</td>
-                                <td>{{ star.star_constellation }}</td>
-                                <td>{{ star.star_type }}</td>
-                                <td>{{ star.star_distance }} </td>
-                                <td>{{ star.star_mass }} </td>
-                                <td>{{ star.star_temperature }} </td>
-                                <td>{{ star.star_period }} </td>
-                                <td>{{ star.star_turn_speed }} </td>
-                                <td>
-                                  <button type="button" class="btn btn-success me-1" href="{% url 'view_star' star.id %}" data-bs-toggle="modal" data-bs-target="#myModal{{star.id}}">
-                                    <i class="fa-solid fa-circle-info fa-lg"></i>
-                                  </button>
-                                </td>
-                               </tr>
-                              {% endfor %}
-                            </tbody>
-                          </table>
-                        </div>
-                      </p>
-                    </div>
-                  </div>
-                  {% else %}
-                  <h5 class="alert alert-primary ms-4 me-4">No stars added</h5>
-                  {% endif %}
-                </div>
+              {% block body %}
+              {% endblock %}
             </div>
             <footer class="mt-auto mb-4">
               <div class="text-center">
