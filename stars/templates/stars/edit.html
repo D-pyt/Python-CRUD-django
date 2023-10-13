@@ -1,10 +1,10 @@
 {% extends "stars/base.html" %}
 
 {% block body %}
-  <h3 class="text-center m-4">Add Star</h3>
+  <h3 class="text-center m-4">Update Star</h3>
   {% if success %}
     <div class="alert alert-success" role="alert">
-      New Star added.
+      Star was updated.
       <a href="{% url 'index' %}" class="alert-link">Go to home page.</a>
     </div>
   {% else %}
@@ -12,13 +12,13 @@
     <div class="col-6">
       <div class="card border-primary mb-3" bis_skin_checked="1">
         <div class="card-header" bis_skin_checked="1">
-          <i class="fa-regular fa-star fa-lg"></i> Add star
+            <i class="fa-regular fa-pen-to-square"></i> Update star info
         </div>
         <div class="card-body" bis_skin_checked="1">
-          <form action="{% url 'add' %}" method="POST">
+          <form action="" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Add</button>
+            <button type="submit" class="btn btn-primary">Update</button>
             <a href="{% url 'index' %}" class="btn btn-secondary">Cancel</a>
           </form>
         </div>
