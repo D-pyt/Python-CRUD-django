@@ -24,5 +24,5 @@ class StarForm(forms.ModelForm):
             'star_mass': forms.TextInput(attrs={'class': 'form-control'}),
             'star_temperature': forms.TextInput(attrs={'class': 'form-control'}),
             'star_period': forms.TextInput(attrs={'class': 'form-control'}),
-            'star_turn_speed': forms.TextInput(attrs={'class': 'form-control'})
+            'star_turn_speed': forms.TextInput(attrs={'class': 'form-control'}),
         }

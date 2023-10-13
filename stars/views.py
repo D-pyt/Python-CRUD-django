@@ -37,7 +37,6 @@ def add(request):
                 star_period = new_star_period,
                 star_turn_speed = new_star_turn_speed
             )
-
             new_star.save()
             return render(request, 'stars/add.html', {
                 'form': StarForm(),
@@ -48,3 +47,20 @@ def add(request):
         return render(request, 'stars/add.html', {
             'form': StarForm()
         })
+
+def edit(request, id):
+    if request.method == 'POST':
+        star = Star.objects.get(pk=id)
+        form = StarForm(request.POST, instance=star)
+        if form.is_valid():
+            form.save()
+            return render(request, 'stars/edit.html', {
+                'form': form,
+                'success': True
+            })
+    else:
+        star = Star.objects.get(pk=id)
+        form = StarForm(instance=star)
+    return render(request, 'stars/edit.html', {
+        'form': form, 
+    })
