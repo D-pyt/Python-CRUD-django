@@ -42,9 +42,68 @@
                       <i class="fa-solid fa-circle-info fa-lg"></i>
                     </button>
 
+                    <!-- Modal - View Star 
+                    <div class="modal" id="myModal{{student.id}}" tabindex="-1" aria-labelledby="myModalLabel1" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">
+                            Star: {{ star.star_name }} {{ star.star_constellation }}
+                          </h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <ul class="list-unstyled">
+                            <li>Star name: <strong>{{ star.star_name}}</strong></li>
+                            <li>Star constellation: <strong>{{ star.star_constellation }}</strong></li>
+                            <li>Type: <strong>{{ star.star_type }}</strong></li>
+                            <li>Distance: <strong>{{ star.star_distance }}</strong></li>
+                            <li>Mass: <strong>{{ star.star_mass }}</strong></li>
+                          </ul>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div> -->
+                  
+
                     <a class="btn  btn-warning me-1" href="{% url 'edit' star.id %}">
                       <i class="fa-regular fa-pen-to-square fa-lg"></i>
                     </a>
+
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{star.id}}">
+                      <i class="fa-solid fa-trash fa-lg"></i>
+                    </button> 
+
+                    <!--- Modal - Delete Star --->
+                    <div class="modal" id="delete{{star.id}}" tabindex="-1" aria-labelledby="myModalLabel2" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">
+                              Star: {{ star.star_name }} {{ star.star_constellation }}
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true"></span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Are you sure you want to delete this star?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <form action="{% url 'delete' star.id}" method="POST">
+                              {% csrf_token %}
+                              <input type="submit" class="btn btn-primary" value="Delete">
+                            </form>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                   </td>
                  </tr>
                 {% endfor %}

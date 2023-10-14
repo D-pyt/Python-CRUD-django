@@ -1,8 +1,11 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.shortcuts import redirect # do i need this?????
 from django.urls import reverse
+
 from .models import Star
 from .forms import StarForm
+
 
 # Create your views here.
 def index(request):
@@ -10,9 +13,11 @@ def index(request):
         'stars': Star.objects.all()
     })
 
+
 def view_star(request, id):
     star = Star.objects.get(pk=id)
     return HttpResponseRedirect(reverse('index'))
+
 
 def add(request):
     if request.method == 'POST':
@@ -64,3 +69,9 @@ def edit(request, id):
     return render(request, 'stars/edit.html', {
         'form': form, 
     })
+
+def delete(request, id):
+    if request.method == 'POST':
+        star = Star.objects.get(pk=id)
+        star.delete()
+    return HttpResponseRedirect(reverse('index'))
