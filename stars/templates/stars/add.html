@@ -8,23 +8,22 @@
       <a href="{% url 'index' %}" class="alert-link">Go to home page.</a>
     </div>
   {% else %}
-  <div class="row justify-content-center">
-    <div class="col-6">
-      <div class="card border-primary mb-3" bis_skin_checked="1">
-        <div class="card-header" bis_skin_checked="1">
-          <i class="fa-regular fa-star fa-lg"></i> Add star
-        </div>
-        <div class="card-body" bis_skin_checked="1">
-          <form action="{% url 'add' %}" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Add</button>
-            <a href="{% url 'index' %}" class="btn btn-secondary">Cancel</a>
-          </form>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <div class="card border-primary mb-3" bis_skin_checked="1">
+          <div class="card-header" bis_skin_checked="1">
+            <i class="fa-regular fa-star fa-lg"></i> Add star
+          </div>
+          <div class="card-body" bis_skin_checked="1">
+            <form action="{% url 'add' %}" method="POST">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" class="btn btn-primary">Add</button>
+              <a href="{% url 'index' %}" class="btn btn-secondary">Cancel</a>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   {% endif %}
-
 {% endblock %}

@@ -1,8 +1,9 @@
 from django.db import models
 
+
 # Create your models here.
 class Star(models.Model):
-    star_name = models.TextField(max_length=50) #add ',null=False' ?
+    star_name = models.TextField(max_length=50)
     star_constellation = models.CharField(max_length=50)
     star_type = models.CharField(max_length=50)
     star_distance = models.TextField(max_length=25)

@@ -1,6 +1,5 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.shortcuts import redirect # do i need this?????
 from django.urls import reverse
 
 from .models import Star
@@ -33,25 +32,30 @@ def add(request):
             new_star_turn_speed = form.cleaned_data['star_turn_speed']
 
             new_star = Star(
-                star_name = new_star_name,
-                star_constellation = new_star_constellation,
-                star_type = new_star_type,
-                star_distance = new_star_distance,
-                star_mass = new_star_mass,
-                star_temperature = new_star_temperature,
-                star_period = new_star_period,
-                star_turn_speed = new_star_turn_speed
+                star_name=new_star_name,
+                star_constellation=new_star_constellation,
+                star_type=new_star_type,
+                star_distance=new_star_distance,
+                star_mass=new_star_mass,
+                star_temperature=new_star_temperature,
+                star_period=new_star_period,
+                star_turn_speed=new_star_turn_speed
             )
             new_star.save()
             return render(request, 'stars/add.html', {
                 'form': StarForm(),
                 'success': True
             })
-        else:
+    else:
+        try:
             form = StarForm()
-        return render(request, 'stars/add.html', {
+            return render(request, 'stars/add.html', {
             'form': StarForm()
-        })
+            })
+        except(ValueError):
+            return HttpResponseRedirect(reverse('index'))
+
+
 
 def edit(request, id):
     if request.method == 'POST':
@@ -67,11 +71,14 @@ def edit(request, id):
         star = Star.objects.get(pk=id)
         form = StarForm(instance=star)
     return render(request, 'stars/edit.html', {
-        'form': form, 
-    })
+        'form': form,
+        })
 
 def delete(request, id):
     if request.method == 'POST':
-        star = Star.objects.get(pk=id)
-        star.delete()
-    return HttpResponseRedirect(reverse('index'))
+        try:
+            star = Star.objects.get(pk=id)
+            star.delete()
+            return HttpResponseRedirect(reverse('index'))
+        except(ValueError):
+            return HttpResponseRedirect(reverse('index'))
