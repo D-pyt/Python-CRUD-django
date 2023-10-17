@@ -14,7 +14,7 @@ def index(request):
 
 
 def view_star(request, id):
-    star = Star.objects.get(pk=id)
+    #star = Star.objects.get(pk=id)
     return HttpResponseRedirect(reverse('index'))
 
 
