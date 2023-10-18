@@ -5,7 +5,8 @@ from .models import Star
 class StarForm(forms.ModelForm):
     class Meta:
         model = Star
-        fields = ['star_name', 'star_constellation', 'star_type', 'star_distance', 'star_mass', 'star_temperature', 'star_period', 'star_turn_speed']
+        fields = ['star_name', 'star_constellation', 'star_type',
+                 'star_distance', 'star_mass', 'star_temperature', 'star_period', 'star_turn_speed']
         labels = {
             'star_name': 'Star name',
             'star_constellation': 'Constellation',

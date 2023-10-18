@@ -8,13 +8,12 @@ from .forms import StarForm
 
 # Create your views here.
 def index(request):
-    return render(request, 'stars/index.html',{
+    return render(request, 'stars/index.html', {
         'stars': Star.objects.all()
     })
 
 
 def view_star(request, id):
-    #star = Star.objects.get(pk=id)
     return HttpResponseRedirect(reverse('index'))
 
 
