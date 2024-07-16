@@ -6,7 +6,6 @@ from .models import Star
 from .forms import StarForm
 
 
-# Create your views here.
 def index(request):
     return render(request, 'stars/index.html', {
         'stars': Star.objects.all()
@@ -55,7 +54,6 @@ def add(request):
             return HttpResponseRedirect(reverse('index'))
 
 
-
 def edit(request, id):
     if request.method == 'POST':
         star = Star.objects.get(pk=id)
@@ -72,6 +70,7 @@ def edit(request, id):
     return render(request, 'stars/edit.html', {
         'form': form,
         })
+
 
 def delete(request, id):
     if request.method == 'POST':
