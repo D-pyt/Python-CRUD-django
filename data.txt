@@ -1,0 +1,24 @@
+from stars.models import Star
+from stars.serializers import StarSerializer
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
+
+serializer = StarSerializer()
+print(repr(serializer))
+
+s = Star(star_name='my star')
+s.save()
+serializer = StarSerializer(s)
+serializer.data
+content  = JSONRenderer().render(serializer.data)
+content
+    
+
+"""
+class StarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Star
+        fields = ['id', 'star_name', 'star_constellation', 'star_type', 'star_distance',
+                  'star_mass', 'star_temperature', 'star_period', 'star_turn_speed']    
+
+"""
