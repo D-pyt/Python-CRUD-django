@@ -1,14 +1,7 @@
 from django import forms
 from .models import Star
 
-class StarForm(forms.Form):
- #star_name = forms.CharField(required=True)
- #fields = ['star_name'].required = False
-   pass
 
-
-
-'''
 class StarForm(forms.ModelForm):  
     class Meta:
         model = Star
@@ -34,4 +27,15 @@ class StarForm(forms.ModelForm):
             'star_period': forms.TextInput(attrs={'class': 'form-control'}),
             'star_turn_speed': forms.TextInput(attrs={'class': 'form-control'}),
         }
+
+'''
+class StarForm(forms.Form):
+    star_name = forms.CharField(required=True)
+    star_constellation = forms.CharField(max_length=100)
+    star_type = forms.CharField(max_length=100)
+    star_distance = forms.CharField(max_length=100)
+    star_mass = forms.CharField(max_length=100)
+    star_temperature = forms.CharField(max_length=100)
+    star_period = forms.CharField(max_length=100)
+    star_turn_speed = forms.CharField(max_length=100)
 '''
