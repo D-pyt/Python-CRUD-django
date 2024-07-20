@@ -9,7 +9,7 @@ This is a CRUD demonstration with Python, Django, HTML5, Bootstrap and Bootswatc
 Install the following prerequisites:
 
 1. [Python 3.8-3.11](https://www.python.org/downloads/)
-2. [Django](https://www.djangoproject.com/download/)
+
 
 
 ## How to start
