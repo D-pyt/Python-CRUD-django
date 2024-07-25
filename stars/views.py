@@ -44,6 +44,13 @@ def add(request):
                 'form': StarForm(),
                 'success': True
             })
+        
+        else:
+            #if name is invalid. need to check
+            return HttpResponseRedirect(reverse('index'))
+
+
+
     else:
         try:
             form = StarForm()
