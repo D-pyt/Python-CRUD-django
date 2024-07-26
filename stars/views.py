@@ -46,6 +46,7 @@ def add(request):
             })
         
         #Id validation
+        #в едит мы сразу передает айди. был пример гдето на гите, как сделать алгоритм
         else:
             return HttpResponseRedirect(reverse('index'))
         
