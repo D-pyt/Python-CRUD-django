@@ -9,6 +9,7 @@ This is a CRUD demonstration with Python, Django, HTML5, Bootstrap and Bootswatc
 Install the following prerequisites:
 
 1. [Python 3.8-3.11](https://www.python.org/downloads/)
+2. [Pip](https://pip.pypa.io/en/stable/)
 
 
 
@@ -62,12 +63,27 @@ follow setup and enter username, email and password.
 python manage.py runserver
 ```
 
-Go to http://127.0.0.1:8000/ to view the application.
+## To try something
 
+1. Go to http://127.0.0.1:8000/ to view the application and do spmething manually
+
+2. To play with json-api use curl or httpie.
+
+GET example
+
+```bash
 http http://127.0.0.1:8000/stars/
+```
 
+POST example
+
+```bash
 http --json POST http://127.0.0.1:8000/stars/  star_name=SomeName star_constellation="Orion" star_distance="Far away" star_mass="40 M."
+```
 
-http --json PUT http://127.0.0.1:8000/stars/18/ star_name=SomeName2 star_constellation="Nebula-x" star_distance="Far away" star_mass="40^C."
+PUT example (dont forget to use correct id)
+```bash
+http --json PUT http://127.0.0.1:8000/stars/18/ star_name=SomeName star_constellation="Nebula-x" star_distance="Far away" star_mass="40^C."
+```
 
-readme, django secret, requirments, test
+ requirments, test
