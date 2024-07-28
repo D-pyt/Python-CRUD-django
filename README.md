@@ -17,12 +17,18 @@ Install the following prerequisites:
 
 from **root**
 
-1. Create venv
+1. Install venv(sometimes not needed)
+
+```
+apt-get install python3-venv
+```
+
+2. Create venv
 
 ```
 python3 -m venv venv
 ```
-2. Activate venv
+3. Activate venv
 
 On mac:
 ```bash
@@ -34,13 +40,13 @@ On Windows:
 venv\scripts\activate
 ```
 
-3. Install dependencies:
+4. Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Migrate db
+5. Migrate db
 
 ```bash
 python manage.py makemigrations
@@ -49,7 +55,7 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-5. Prepare admin user(superuser) in Django
+6. Prepare admin user(superuser) in Django
 
 ```bash
 python manage.py createsuperuser
@@ -57,7 +63,7 @@ python manage.py createsuperuser
 
 follow setup and enter username, email and password.
 
-6. Everything ready. Run the application
+7. Everything ready. Run the application
 
 ```bash
 python manage.py runserver
