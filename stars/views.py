@@ -3,6 +3,9 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 from .models import Star
 from .forms import StarForm
@@ -92,6 +95,7 @@ def delete(request, id):
 
 #DRF functions
 #~/stars/
+'''
 @csrf_exempt
 def star_list(request):
     if request.method == 'GET':
@@ -129,3 +133,40 @@ def star_detail(request, pk):
     elif request.method == 'DELETE':
         star.delete()
         return HttpResponse(status=204)
+'''    
+@api_view(['GET', 'POST'])
+def star_list(request, format=None):
+    if request.method == 'GET':
+        star = Star.objects.all()
+        serializer = StarSerializer(star, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = StarSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def star_detail(request, pk, format=None):
+    try:
+        star = Star.objects.get(pk=pk)
+    except Star.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = StarSerializer(star)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = StarSerializer(star, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        star.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
