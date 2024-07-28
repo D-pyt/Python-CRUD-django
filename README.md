@@ -20,7 +20,7 @@ from **root**
 1. Create venv
 
 ```
-python -m venv venv
+python3 -m venv venv
 ```
 2. Activate venv
 
