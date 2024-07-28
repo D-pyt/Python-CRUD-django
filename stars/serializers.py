@@ -17,13 +17,13 @@ class StarSerializer(serializers.Serializer):
         return Star.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        instance.star_name = validated_data.get('name', instance.star_name)
-        instance.star_constellation = validated_data.get('constellation', instance.star_constellation)
-        instance.star_type = validated_data.get('type', instance.star_type)
-        instance.star_distance = validated_data.get('distance', instance.star_distance)
-        instance.star_mass = validated_data.get('mass', instance.star_mass)
-        instance.star_temperature = validated_data.get('temperature', instance.star_temperature)
-        instance.star_period = validated_data.get('period', instance.star_period)
-        instance.star_turn_speed = validated_data.get('turn_speed', instance.star_turn_speed)
+        instance.star_name = validated_data.get('star_name', instance.star_name)
+        instance.star_constellation = validated_data.get('star_constellation', instance.star_constellation)
+        instance.star_type = validated_data.get('star_type', instance.star_type)
+        instance.star_distance = validated_data.get('star_distance', instance.star_distance)
+        instance.star_mass = validated_data.get('star_mass', instance.star_mass)
+        instance.star_temperature = validated_data.get('star_temperature', instance.star_temperature)
+        instance.star_period = validated_data.get('star_period', instance.star_period)
+        instance.star_turn_speed = validated_data.get('star_turn_speed', instance.star_turn_speed)
         instance.save()
         return instance
