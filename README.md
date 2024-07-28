@@ -69,3 +69,5 @@ http http://127.0.0.1:8000/stars/
 http --json POST http://127.0.0.1:8000/stars/  star_name=SomeName star_constellation="Orion" star_distance="Far away" star_mass="40 M."
 
 http --json PUT http://127.0.0.1:8000/stars/18/ star_name=SomeName2 star_constellation="Nebula-x" star_distance="Far away" star_mass="40^C."
+
+readme, django secret, requirments, test

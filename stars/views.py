@@ -1,7 +1,6 @@
-from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-
 from rest_framework import status
 from rest_framework.response import Response
 from django.http import Http404
@@ -18,7 +17,6 @@ def index(request):
     return render(request, 'stars/index.html', {
         'stars': Star.objects.all()
     })
-
 
 def view_star(request, id):
     return HttpResponseRedirect(reverse('index'))
@@ -56,7 +54,7 @@ def add(request):
         else:
             return HttpResponseRedirect(reverse('index'))
         
-    #Getting add page
+    #If method!= 'POST'
     else:
         try:
             form = StarForm()
@@ -65,7 +63,6 @@ def add(request):
             })
         except(ValueError):
             return HttpResponseRedirect(reverse('index'))
-
 
 def edit(request, id):
     if request.method == 'POST':
@@ -84,7 +81,6 @@ def edit(request, id):
         'form': form,
         })
 
-
 def delete(request, id):
     if request.method == 'POST':
         try:
@@ -97,45 +93,6 @@ def delete(request, id):
 
 #DRF functions(class format)
 #~/stars/
-'''
- 
-@api_view(['GET', 'POST'])
-def star_list(request, format=None):
-    if request.method == 'GET':
-        star = Star.objects.all()
-        serializer = StarSerializer(star, many=True)
-        return Response(serializer.data)
-
-    elif request.method == 'POST':
-        serializer = StarSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-
-@api_view(['GET', 'PUT', 'DELETE'])
-def star_detail(request, pk, format=None):
-    try:
-        star = Star.objects.get(pk=pk)
-    except Star.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    if request.method == 'GET':
-        serializer = StarSerializer(star)
-        return Response(serializer.data)
-
-    elif request.method == 'PUT':
-        serializer = StarSerializer(star, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    elif request.method == 'DELETE':
-        star.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-'''
 class StarList(APIView):
     def get(self, request, format=None):
         star = Star.objects.all()
@@ -173,3 +130,4 @@ class StartDetail(APIView):
         star = self.get_object(pk)
         star.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
