@@ -65,7 +65,7 @@ python manage.py runserver
 
 ## To try something
 
-1. Go to http://127.0.0.1:8000/ to view the application and do spmething manually
+1. Go to http://127.0.0.1:8000/ to view the application and do something manually
 
 2. To play with json-api use curl or httpie.
 
@@ -85,5 +85,3 @@ PUT example (dont forget to use correct id)
 ```bash
 http --json PUT http://127.0.0.1:8000/stars/18/ star_name=SomeName star_constellation="Nebula-x" star_distance="Far away" star_mass="40^C."
 ```
-
- requirments, test
